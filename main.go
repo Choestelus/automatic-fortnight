@@ -1,6 +1,10 @@
 package fortnight
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/Choestelus/automatic-fortnight"
+)
 
 func main() {
 	fmt.Println("such is")
