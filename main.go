@@ -1,7 +1,6 @@
-package main
+package fortnight
 
 import "fmt"
-import "fortnight"
 
 func main() {
 	fmt.Println("such is")
