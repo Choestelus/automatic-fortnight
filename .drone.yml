@@ -1,6 +1,12 @@
 pipeline:
   build:
-    image: golang
+    image: golang:${GO_VERSION}
     commands:
       - go build
       - go test
+
+matrix:
+  GO_VERSION:
+    - latest
+    - 1.9
+    - 1.8
