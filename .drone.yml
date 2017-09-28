@@ -9,7 +9,7 @@ pipeline:
     image: plugins/docker
     repo: choestelus/fortnight
     tags: ${GO_VERSION}
-    build-args:
+    build_args:
       - GO_VERSION=${GO_VERSION}
     secrets: [docker_username, docker_password]
     when:
