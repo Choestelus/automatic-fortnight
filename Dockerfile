@@ -1,5 +1,5 @@
-ARG UPSTREAM_TAG=latest
-FROM golang:${UPSTREAM_TAG}
+ARG GO_VERSION=latest
+FROM golang:${GO_VERSION}-alpine
 
 WORKDIR /go/src/fortnight
 COPY . .
