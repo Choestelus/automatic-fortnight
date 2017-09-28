@@ -5,6 +5,15 @@ pipeline:
       - go build
       - go test
 
+  push:
+    image: plugins/docker
+    repo: choestelus/fortnight
+    tags: latest
+    secrets: [docker_username, docker_password]
+    when:
+      environment:
+        GO_VERSION: [latest, 1.9]
+
 matrix:
   GO_VERSION:
     - latest
