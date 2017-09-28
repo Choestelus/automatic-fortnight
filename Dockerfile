@@ -1,5 +1,5 @@
-ARG GO_VERSION=latest
-FROM golang:${GO_VERSION}-alpine
+ARG GO_VERSION
+FROM golang:${GO_VERSION}
 
 WORKDIR /go/src/fortnight
 COPY . .

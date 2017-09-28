@@ -8,14 +8,15 @@ pipeline:
   push:
     image: plugins/docker
     repo: choestelus/fortnight
-    tags: latest
+    tags: ${GO_VERSION}
+    build-args:
+      - GO_VERSION=${GO_VERSION}
     secrets: [docker_username, docker_password]
     when:
       matrix:
-        GO_VERSION: [latest, 1.9]
+        GO_VERSION: 1.9-alpine
 
 matrix:
   GO_VERSION:
-    - latest
     - 1.9
-    - 1.8
+    - 1.9-alpine
