@@ -11,7 +11,7 @@ pipeline:
     tags: latest
     secrets: [docker_username, docker_password]
     when:
-      environment:
+      matrix:
         GO_VERSION: [latest, 1.9]
 
 matrix:
