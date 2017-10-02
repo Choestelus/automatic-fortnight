@@ -22,7 +22,7 @@ pipeline:
     image: vallard/drone-kube
     template: drone-deployment.yml
     namespace: default
-    secrets: [KUBE_TOKEN, KUBE_CA, KUBE_SERVER]
+    secrets: [KUBE_TOKEN, KUBE_SERVER]
     when:
       event: [push, tag, deployment]
       matrix:
