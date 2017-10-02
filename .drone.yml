@@ -25,7 +25,7 @@ pipeline:
     server: https://192.168.99.100:8443
     secrets: [KUBE_TOKEN, KUBE_CA, KUBE_SERVER]
     when:
-      event: [tag, deployment]
+      event: [push, tag, deployment]
       matrix:
         GO_VERSION: 1.9-alpine
 
