@@ -14,7 +14,7 @@ pipeline:
     secrets: [docker_username, docker_password]
     when:
       event:
-        exclude: deployment
+        exclude: [push, deployment]
       matrix:
         GO_VERSION: 1.9-alpine
 
