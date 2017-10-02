@@ -13,6 +13,8 @@ pipeline:
       - GO_VERSION=${GO_VERSION}
     secrets: [docker_username, docker_password]
     when:
+      event:
+        exclude: deployment
       matrix:
         GO_VERSION: 1.9-alpine
 
@@ -21,8 +23,9 @@ pipeline:
     template: drone-deployment.yml
     namespace: default
     server: https://192.168.99.100:8443
+    secrets: [KUBE_TOKEN, KUBE_CA, KUBE_SERVER]
     when:
-      event: tag
+      event: [tag, deployment]
       matrix:
         GO_VERSION: 1.9-alpine
 
