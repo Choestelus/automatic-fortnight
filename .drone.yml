@@ -8,11 +8,21 @@ pipeline:
   push:
     image: plugins/docker
     repo: choestelus/fortnight
-    tags: ${GO_VERSION}
+    tags: ${DRONE_TAG##v}
     build_args:
       - GO_VERSION=${GO_VERSION}
     secrets: [docker_username, docker_password]
     when:
+      matrix:
+        GO_VERSION: 1.9-alpine
+
+  deploy:
+    image: vallard/drone-kube
+    template: drone-deployment.yml
+    namespace: default
+    server: https://192.168.99.100:8443
+    when:
+      event: tag
       matrix:
         GO_VERSION: 1.9-alpine
 
