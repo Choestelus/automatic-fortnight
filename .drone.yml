@@ -19,9 +19,10 @@ pipeline:
         GO_VERSION: 1.9-alpine
 
   deploy:
-    image: vallard/drone-kube
+    image: choestelus/drone-kube
     template: drone-deployment.yml
     namespace: default
+    insecure_skip_tls_verify: true
     secrets: [KUBE_TOKEN, KUBE_SERVER]
     when:
       event: [push, tag, deployment]
