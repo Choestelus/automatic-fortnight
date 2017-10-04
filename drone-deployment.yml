@@ -23,7 +23,7 @@ spec:
         app: fortnight
     spec:
       containers:
-      - image: choestelus/fortnight:latest
+      - image: choestelus/fortnight:{{ build.tag }}
         imagePullPolicy: IfNotPresent
         name: fortnight
         ports:
