@@ -23,7 +23,7 @@ pipeline:
     template: drone-deployment.yml
     namespace: default
     insecure_skip_tls_verify: true
-    secrets: [KUBE_SERVER, KUBE_USERNAME, KUBE_PASSWORD]
+    secrets: [KUBE_SERVER, KUBE_TOKEN, KUBE_CA]
     when:
       event: [push, tag, deployment]
       matrix:
