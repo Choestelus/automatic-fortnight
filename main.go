@@ -1,14 +1,17 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"time"
 )
 
 func main() {
-	time.Sleep(20 * time.Second)
+	log.Printf("Initializing...")
 	mux := http.NewServeMux()
+	time.Sleep(20 * time.Second)
+	fmt.Printf("done\n")
 
 	mux.HandleFunc("/foo", FooHandler)
 	mux.HandleFunc("/", IndexHandler)
