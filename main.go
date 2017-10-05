@@ -1,25 +1,25 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
-	"os"
+	"time"
 )
 
 func main() {
-	fmt.Println("such is")
-	fmt.Println(AddNumber(2, 3))
-	fmt.Fprintf(os.Stdout, "%v\n", "test")
+	time.Sleep(20 * time.Second)
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/foo", FooHandler)
 	mux.HandleFunc("/", IndexHandler)
+	mux.HandleFunc("/health", LivenessHandler)
+	mux.HandleFunc("/fail", InternalServerErrorhandler)
 
 	s := &http.Server{
 		Addr:    ":9000",
 		Handler: mux,
 	}
+
 	log.Printf("Listening on %v", s.Addr)
 	log.Fatal(s.ListenAndServe())
 }

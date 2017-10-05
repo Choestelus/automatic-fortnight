@@ -20,3 +20,12 @@ func FooHandler(w http.ResponseWriter, r *http.Request) {
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "hello index")
 }
+
+func LivenessHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "ok")
+}
+
+func InternalServerErrorhandler(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusInternalServerError)
+	fmt.Fprintf(w, "500 - Internal Server Server")
+}
