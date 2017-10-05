@@ -5,7 +5,7 @@ pipeline:
       - go build
       - go test
 
-  push:
+  publish:
     image: plugins/docker
     repo: choestelus/fortnight
     tags: ${DRONE_TAG##v}
@@ -19,13 +19,13 @@ pipeline:
         GO_VERSION: 1.9-alpine
 
   deploy:
-    image: vallard/drone-kube
+    image: choestelus/drone-kube
     template: drone-deployment.yml
     namespace: default
     insecure_skip_tls_verify: false
     secrets: [KUBE_SERVER, KUBE_TOKEN, KUBE_CA]
     when:
-      event: [push, tag, deployment]
+      event: [tag, deployment]
       matrix:
         GO_VERSION: 1.9-alpine
 

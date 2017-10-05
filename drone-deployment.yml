@@ -7,7 +7,7 @@ metadata:
   namespace: default
 spec:
   progressDeadlineSeconds: 600
-  replicas: 7
+  replicas: 3
   revisionHistoryLimit: 5
   selector:
     matchLabels:
@@ -23,7 +23,7 @@ spec:
         app: fortnight
     spec:
       containers:
-      - image: 'choestelus/fortnight:{{ build.tag }}'
+      - image: 'choestelus/fortnight:{{ lefttrim build.tag 1 }}'
         imagePullPolicy: IfNotPresent
         name: fortnight
         ports:
